@@ -20,12 +20,16 @@ export class Exception extends Component {
 			<span
 				className={[style.exceptionRow, (this.props.isPrevious ? style.previous : 'icon-caret-dark')].join(' ')}
 				onClick={this.clickHandler}>
+				{this.props.isPrevious ? [
+					<span className={style.exception}>{t('logreader', 'Caused by ')}</span>,
+					<>&nbsp;</>
+				] : []}
 				<span className={style.exception}>
-					{this.props.isPrevious ? t('logreader', 'Caused by ') : ''}
 					{this.props.Exception}
 				</span>:&nbsp;
 				{this.props.File && this.props.Line ? [
-					<span className={style.fileline}>{this.props.File}:{this.props.Line}</span>
+					<span className={style.fileline}>{this.props.File}:{this.props.Line}</span>,
+					<>&nbsp;</>
 				] : []}
 				<span className={style.message}>{this.props.Message}</span>
 				{expanded && this.props.CustomMessage ? [
