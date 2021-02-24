@@ -179,6 +179,7 @@ export class LogProvider extends EventEmitter {
 				this.cachedEntries = newData.concat(this.cachedEntries);
 				this.emit('entries', this.cachedEntries);
 			}
+                  await new Promise(resolve => setTimeout(resolve, 5000));
 		}
 
 		this.pollActive = false;
