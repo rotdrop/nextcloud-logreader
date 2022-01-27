@@ -9,7 +9,7 @@ import {createRoot} from 'react-dom/client';
 // Enable React devtools
 window.React = React;
 
-const logProvider = new LogProvider(50);
+const logProvider = new LogProvider(200);
 
 if (OCA.Search) {
 	OCA.Search.logreader = new LogSearch(logProvider);
