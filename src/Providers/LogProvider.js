@@ -20,7 +20,7 @@ export class LogProvider extends EventEmitter {
 	poll = false;
 	pollActive = false;
 
-	constructor (limit = 50) {
+	constructor (limit = 200) {
 		super();
 		this.baseLimit = limit;
 		this.loading = false;
