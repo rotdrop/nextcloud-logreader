@@ -21,4 +21,17 @@
     margin-top: 10px;
     border-top: 1px solid #eee;
   }
+
+  .customMessage {
+    font-style:italic;
+    &::before {
+      content: " (";
+    }
+    &::after {
+      content: ")";
+    }
+  }
+
+  .message {
+  }
 }

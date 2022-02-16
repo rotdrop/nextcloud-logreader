@@ -25,6 +25,7 @@ export class Exception extends Component {
 					{this.props.Exception}
 				</span>:&nbsp;
 				<span className={style.message}>{this.props.Message}</span>
+				{this.props.CustomMessage ? [<span className={style.customMessage}>{this.props.CustomMessage}</span>] : []}
 				<StackTrace trace={this.props.Trace}
 							expanded={expanded}/>
 				{expanded && this.props.Previous ? [
