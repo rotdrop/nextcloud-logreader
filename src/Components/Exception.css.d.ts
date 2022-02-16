@@ -1,7 +1,9 @@
 declare namespace ExceptionCssNamespace {
 	export interface IExceptionCss {
+		customMessage: string;
 		exception: string;
 		exceptionRow: string;
+		message: string;
 		previous: string;
 		trace: string;
 	}

@@ -51,6 +51,7 @@ export class BackgroundException extends Component {
 				Error while running background job&nbsp;
 				<span
 					className={style.exception}>({this.props.Exception})</span>:
+				{this.props.CustomMessage ? [<span className={style.customMessage}>{this.props.CustomMessage}</span>] : []}
 				<span className={style.messsage}> {this.props.Message}</span>
 				{traceElements}
 			</span>
