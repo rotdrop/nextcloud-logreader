@@ -53,6 +53,7 @@ class LogController extends Controller {
 	 * @param int $offset
 	 * @param string $levels
 	 * @return TemplateResponse
+         * @AuthorizedAdminSetting(settings=OCA\LogReader\Settings\Admin)
 	 */
 	public function get($count = 50, $offset = 0, $levels = '11111') {
 		$iterator = $this->logIteratorFactory->getLogIterator($levels);
@@ -87,6 +88,7 @@ class LogController extends Controller {
 	 * @param $lastReqId
 	 * @param string $levels
 	 * @return JSONResponse
+         * @AuthorizedAdminSetting(settings=OCA\LogReader\Settings\Admin)
 	 */
 	public function poll($lastReqId, $levels = '11111') {
 		$cycles = 0;
@@ -129,6 +131,7 @@ class LogController extends Controller {
 	 * @return TemplateResponse
 	 *
 	 * @NoCSRFRequired
+         * @AuthorizedAdminSetting(settings=OCA\LogReader\Settings\Admin)
 	 */
 	public function search($query = '', $count = 50, $offset = 0, $levels = '11111') {
 		$iterator = $this->logIteratorFactory->getLogIterator($levels);
@@ -139,10 +142,16 @@ class LogController extends Controller {
 		return $this->responseFromIterator($iterator, $count, $offset);
 	}
 
+	/**
+	 * @AuthorizedAdminSetting(settings=OCA\LogReader\Settings\Admin)
+	 */
 	public function getLevels() {
 		return new JSONResponse($this->config->getAppValue('logreader', 'levels', '11111'));
 	}
 
+	/**
+	 * @AuthorizedAdminSetting(settings=OCA\LogReader\Settings\Admin)
+	 */
 	public function getSettings() {
 		return new JSONResponse([
 			'levels' => $this->config->getAppValue('logreader', 'levels', '11111'),
@@ -155,6 +164,7 @@ class LogController extends Controller {
 
 	/**
 	 * @param bool $relative
+	 * @AuthorizedAdminSetting(settings=OCA\LogReader\Settings\Admin)
 	 */
 	public function setRelative($relative) {
 		$this->config->setAppValue('logreader', 'relativedates', $relative);
@@ -162,11 +172,15 @@ class LogController extends Controller {
 
 	/**
 	 * @param bool $live
+	 * @AuthorizedAdminSetting(settings=OCA\LogReader\Settings\Admin)
 	 */
 	public function setLive($live) {
 		$this->config->setAppValue('logreader', 'live', $live);
 	}
 
+	/**
+	 * @AuthorizedAdminSetting(settings=OCA\LogReader\Settings\Admin)
+	 */
 	public function setLevels($levels) {
 		$intLevels = array_map('intval', str_split($levels));
 		$minLevel = 4;
