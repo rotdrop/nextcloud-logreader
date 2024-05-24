@@ -78,7 +78,7 @@ const props = defineProps<{
 	logEntries: readonly ILogEntry[]
 }>()
 
-const { formatTime, formatLogEntry } = useLogFormatting()
+const { formatLogEntry, formatTime } = useLogFormatting()
 
 /**
  * Whether to show the full exception
