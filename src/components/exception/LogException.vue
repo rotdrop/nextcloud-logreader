@@ -11,7 +11,10 @@
 			<span class="exception__message">{{ exceptionMessage }}</span>
 		</div>
 		<StackTrace v-if="props.isExpanded" :trace="props.exception.Trace" class="exception__trace" />
-		<LogException v-if="props.isExpanded && props.exception.Previous" :is-previous="true" :exception="props.exception.Previous" />
+		<LogException v-if="props.isExpanded && props.exception.Previous"
+			:is-expanded="props.isExpanded"
+			:is-previous="true"
+			:exception="props.exception.Previous" />
 	</span>
 </template>
 <script setup lang="ts">
