@@ -62,7 +62,7 @@ export function parseException(logException: IException | string): IException | 
  * @param logMessage message to check
  */
 function isNestedJsonException(logMessage: unknown) {
-	return typeof logMessage === 'string' && logMessage[0] === '{'
+	return typeof logMessage === 'string' && logMessage.startsWith('{"')
 }
 
 /**
