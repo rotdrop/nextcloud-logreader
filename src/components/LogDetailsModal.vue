@@ -44,13 +44,13 @@
 						{{ isExceptionExpanded ? t('logreader', 'Hide exception details') : t('logreader', 'View exception details') }}
 					</NcButton>
 				</div>
+				<div v-if="currentEntry.message">
+					<span class="log__message">{{ currentEntry.message }}</span>
+				</div>
 				<template v-if="currentEntry.exception">
 					<LogException :exception="currentEntry.exception" class="log-details__exception" :is-expanded="isExceptionExpanded" />
 					<hr>
 				</template>
-				<div v-else-if="currentEntry.message">
-					<span class="log__message">{{ currentEntry.message }}</span>
-				</div>
 				<figure class="log-details__raw">
 					<figcaption>{{ t('logreader', 'Raw log entry') }}</figcaption>
 					<!-- eslint-disable-next-line vue/no-v-html -->
